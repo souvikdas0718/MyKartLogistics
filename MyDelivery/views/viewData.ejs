@@ -1,0 +1,39 @@
+
+<body>
+<h2> Order List <i class="fa fa-list-alt" style="font-size:35px" aria-hidden="true"></i></h2>
+<br />
+<table class="table table-striped xtable-hover" style="margin-top: 50px;">
+    <thead class="thead-dark">
+    <tr>
+        <th>Order ID</th>
+        <th>Product ID</th>
+        <th>Seller ID</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% MyDelivery.forEach(function(part){ %>
+
+        <tr>
+            <td><%= part.order_id %></td>
+            <td><%= part.product_id %></td>
+            <td><%= part.seller_id %></td>
+            <td><%= part.user_address %></td>
+            <td><%= part.status %></td>
+            <td><%= '$'+part.order_total %></td>
+                <td><form action="/delivery/order/edit?order_id=<%= part.order_id %>" method="post">
+                    <button class="btn btn-outline-info">Edit Status
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+</body>
+<br />
